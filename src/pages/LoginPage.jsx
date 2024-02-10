@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -34,36 +35,56 @@ const LoginPage = () => {
   };
 
   return (
-    <form style={{padding: "20px"}} onSubmit={handleSubmit}>
-      <p>E-Mail : homework@eva.guru</p>
-      <p>Password : Homeworkeva1**</p>
-      <br />
-      <div>
-        <label htmlFor="">E-Mail : </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
+    <React.Fragment>
+      <Header />
+      <div className="login_form_wrapper">
+        <form style={{ padding: "20px" }} onSubmit={handleSubmit}>
+          <div className="login_information">
+            <p>
+              <span>E-Mail :</span> homework@eva.guru
+            </p>
+            <p>
+              <span>Password :</span> Homeworkeva1**
+            </p>
+          </div>
+          <br />
+          <div className="login_inputs">
+            <div>
+              <label htmlFor="">E-Mail : </label>
+              <br />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <br />
+            <div>
+              <label htmlFor="">Password : </label>
+              <br />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="login_btn">
+            <button
+              style={{ padding: "10px", borderRadius: "10px" }}
+              type="submit"
+            >
+              Login
+            </button>
+          </div>
+        </form>
       </div>
-      <br />
-      <div>
-        <label htmlFor="">Password : </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <br />
-      <div>
-        <button style={{padding: "10px", borderRadius: "10px"}} type="submit">Login</button>
-      </div>
-    </form>
+    </React.Fragment>
   );
 };
 
